@@ -38,7 +38,7 @@ void queryKey(
             if (RegQueryValueExA(hSubKey, variable, NULL, &type, (LPBYTE)valueData, &valueSize) == ERROR_SUCCESS) {
                 if (type == REG_SZ || type == REG_EXPAND_SZ) {
                     valueData[valueSize - 1] = '\0';
-                    printf("Subkey: %s, %s: %s\n", subKeyName, variable, valueData);
+                    printf("Subkey: %s\nValue of %s = %s\n\n", subKeyName, variable, valueData);
                 }
             }
             RegCloseKey(hSubKey);
@@ -53,5 +53,5 @@ void queryKey(
 int main(void)
 {
     queryKey(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services", "ImagePath");
-    return 0;
+    return 0;   
 }
